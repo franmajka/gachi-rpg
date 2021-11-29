@@ -3,11 +3,11 @@ using System;
 using Utils;
 namespace Entities {
   public abstract class Creature : Entity {
-    private static readonly double MOVE_SPEED_MULTIPLIER = 1.2;
+    protected static readonly double MOVE_SPEED_MULTIPLIER = 1.2;
 
-    private readonly ObservableProperty<uint> _strength;
-    private readonly ObservableProperty<uint> _agility;
-    private readonly ObservableProperty<uint> _intelligence;
+    protected readonly ObservableProperty<uint> _strength;
+    protected readonly ObservableProperty<uint> _agility;
+    protected readonly ObservableProperty<uint> _intelligence;
 
     public uint Strength {
       get => _strength.Value;
@@ -24,10 +24,10 @@ namespace Entities {
       set => _intelligence.Value = value;
     }
 
-    private ComputedProperty<int> _damage;
+    protected ComputedProperty<int> _damage;
     public virtual int Damage => _damage.Value;
 
-    private ComputedProperty<uint> _moveSpeed;
+    protected ComputedProperty<uint> _moveSpeed;
     public virtual uint MoveSpeed => _moveSpeed.Value;
 
     public Creature(string name, uint strength, uint agility, uint intelligence) : base(name) {
